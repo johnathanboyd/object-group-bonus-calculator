@@ -40,27 +40,48 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
  let bonusPercentage = 0;
- let totalCompensation = totalBonus + annualSalary;
  let totalBonus = 0;
+ let totalCompensation = totalBonus + employees.annualSalary;
+ 
 
  function rating (employee){
     // loop through employee objects
-    for (let i = 0; i < array.length; i++) {
-      const element = array[i];
-      if (reviewRating <= 2) {
+    for (let i = 0; i < employee.length; i++) {
+      
+      if (employee.reviewRating <= 2) {
         totalBonus = 0;
+        return totalBonus;
       }
-      else if (reviewRating = 3)
-        totalBonus = annualSalary * .04;
+      else if (employee.reviewRating = 3){
+        totalBonus = employee.annualSalary * .04;
+        console.log(totalBonus);
+        return totalBonus;
       }
-      else if (reviewRating = 4)
-        totalBonus = annualSalary * .06;
+      else if (employee.reviewRating = 4){
+        totalBonus = employee.annualSalary * .06;
+        console.log(totalBonus);
+        return totalBonus;
       }
-      else if (reviewRating = 5)
-        totalBonus = annualSalary * .10;
+      else if (employee.reviewRating = 5){
+        totalBonus = employee.annualSalary * .10;
+        console.log(totalBonus);
+        return totalBonus;
       }
       else {
         return 'what is this?';
       }
- }
+    }
+  };  
 console.log( employees );
+
+console.log(rating( employees ));
+
+// test function
+// aim to loop through and pinpoint desired value.
+function display (person){
+  for (let i=0; i < person.length; i++){
+  console.log(`${employees[i].employeeNumber}`)
+  };
+}
+
+display(employees);
