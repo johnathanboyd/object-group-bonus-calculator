@@ -1,3 +1,4 @@
+$( document ).ready( readyNow );
 const employees = [
   {
     name: 'Atticus',
@@ -86,10 +87,30 @@ const employees = [
         object.bonusPercentage = 0;
       }  
       object.totalCompensation = Number(array.annualSalary) + object.totalBonus;
+      object.bonusPercentage = `${object.bonusPercentage}` * 100;
       return object;
     }
   }
   rating(employees);
 
   console.log(employees);
-  
+
+function displayBonus(){
+  console.log( 'in displayBonus' );
+  let person = $( '#employeeNameIn' ).val();
+  // target output by ID
+  let el = $( '#bonusPercentageOut' );
+  // empty
+  el.empty();
+  // loop through employees array
+  for (person of employees ){
+  el.append( `<h3>`+ `${person.bonusPercentage}`+ `</h3>`)
+  }
+};  
+
+function readyNow (){
+  console.log( 'JQ' );
+  $( '#addEmployeeButton' ).on( 'click', displayBonus );
+  let el = $( '#bonusPercentageOut' );
+  el.empty();
+}
