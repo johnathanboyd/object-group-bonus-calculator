@@ -68,7 +68,7 @@ const employees = [
       }
       // if employee has 4 digit employee number add 5% bonus
       if (array.employeeNumber > 999 && array.employeeNumber < 10000){
-        object.totalBonus += object.totalBonus * .05;
+        object.totalBonus += array.annualSalary * .05;
         object.bonusPercentage += .05;
       }
       // if income is greater than $65k adjust bonus down 1%
