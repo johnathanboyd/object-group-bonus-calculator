@@ -45,68 +45,51 @@ const employees = [
     for (let i = 0; i < employee.length; i++) {
       let bBonus = callFunction(employee[i]);
       console.log(bBonus);
-    }
+  }
 
     function callFunction(array){
       let object = {name: '', bonusPercentage: 0, totalCompensation: 0, totalBonus: 0};
       object.name = array.name;
 
-      if (employee.reviewRating <= 2){
+      if (array.reviewRating <= 2){
         object.totalBonus = 0;
       }
-      else if (employee.reviewRating === 3){
+      else if (array.reviewRating === 3){
         object.totalBonus = array.annualSalary * .04;
+        object.bonusPercentage = .04;
       }
-      else if (employee.reviewRating === 4){
+      else if (array.reviewRating === 4){
         object.totalBonus = array.annualSalary * .06;
+        object.bonusPercentage = .06;
       }
-      else if (employee.reviewRating === 5){
+      else if (array.reviewRating === 5){
         object.totalBonus = array.annualSalary * .1;
+        object.bonusPercentage = .1;
       }
       // if employee has 4 digit employee number add 5% bonus
       if (array.employeeNumber > 999 && array.employeeNumber < 10000){
         object.totalBonus += object.totalBonus * .05;
+        object.bonusPercentage += .05;
       }
       // if income is greater than $65k adjust bonus down 1%
-      if 
+      if (array.annualSalary > 65000){
+        object.totalBonus += object.totalBonus - array.annualSalary * .01;
+        object.bonusPercentage -= .01;
+      }
       // no bonus can be above 13% or below 0%
+      if (object.totalBonus > array.annualSalary * .13){
+        object.totalBonus = array.annualSalary * .13;
+        object.bonusPercentage = .13;
+      } 
+      if ( object.totalBonus < 0){
+        object.totalBonus = 0;
+        object.bonusPercentage = 0;
+      }  
+      object.totalCompensation = Number(array.annualSalary) + object.totalBonus;
+      return object;
     }
-      /*if (employee.reviewRating <= 2) {
-        totalBonus = 0;
-        return totalBonus;
-      }
-      else if (employee.reviewRating = 3){
-        totalBonus = employee.annualSalary * .04;
-        console.log(totalBonus);
-        return totalBonus;
-      }
-      else if (employee.reviewRating = 4){
-        totalBonus = employee.annualSalary * .06;
-        console.log(totalBonus);
-        return totalBonus;
-      }
-      else if (employee.reviewRating = 5){
-        totalBonus = employee.annualSalary * .10;
-        console.log(totalBonus);
-        return totalBonus;
-      }
-      else {
-        return 'what is this?';
-      }
-    }
-  };  
-console.log( employees );
+  }
+  rating(employees);
 
-console.log(rating( employees ));*/
-
-// test function
-// aim to loop through and pinpoint desired value.
-//function display (person){
-  for (let i=0; i < person.length; i++){
-  console.log(`${employees[i].employeeNumber}`);
-  console.log(`${employees[i].annualSalary}`);
-  console.log(`${employees[i].reviewRating}`);
-  };
-}
-
-display(employees);//
+  console.log(employees);
+  
