@@ -39,16 +39,39 @@ const employees = [
 
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
- let bonusPercentage = 0;
- let totalBonus = 0;
- let totalCompensation = totalBonus + employees.annualSalary;
- 
 
  function rating (employee){
     // loop through employee objects
     for (let i = 0; i < employee.length; i++) {
-      
-      if (employee.reviewRating <= 2) {
+      let bBonus = callFunction(employee[i]);
+      console.log(bBonus);
+    }
+
+    function callFunction(array){
+      let object = {name: '', bonusPercentage: 0, totalCompensation: 0, totalBonus: 0};
+      object.name = array.name;
+
+      if (employee.reviewRating <= 2){
+        object.totalBonus = 0;
+      }
+      else if (employee.reviewRating === 3){
+        object.totalBonus = array.annualSalary * .04;
+      }
+      else if (employee.reviewRating === 4){
+        object.totalBonus = array.annualSalary * .06;
+      }
+      else if (employee.reviewRating === 5){
+        object.totalBonus = array.annualSalary * .1;
+      }
+      // if employee has 4 digit employee number add 5% bonus
+      if (array.employeeNumber > 999 && array.employeeNumber < 10000){
+        object.totalBonus += object.totalBonus * .05;
+      }
+      // if income is greater than $65k adjust bonus down 1%
+      if 
+      // no bonus can be above 13% or below 0%
+    }
+      /*if (employee.reviewRating <= 2) {
         totalBonus = 0;
         return totalBonus;
       }
@@ -74,14 +97,16 @@ const employees = [
   };  
 console.log( employees );
 
-console.log(rating( employees ));
+console.log(rating( employees ));*/
 
 // test function
 // aim to loop through and pinpoint desired value.
-function display (person){
+//function display (person){
   for (let i=0; i < person.length; i++){
-  console.log(`${employees[i].employeeNumber}`)
+  console.log(`${employees[i].employeeNumber}`);
+  console.log(`${employees[i].annualSalary}`);
+  console.log(`${employees[i].reviewRating}`);
   };
 }
 
-display(employees);
+display(employees);//
